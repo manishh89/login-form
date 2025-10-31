@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Home • Login</title>
+  <meta name="description" content="Simple responsive login page demo" />
+  <style>
+    /* Reset-ish */
+    * { box-sizing: border-box; }
+    html,body { height:100%; margin:0; font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; color:#111827; background: linear-gradient(180deg,#f8fafc,#eef2f7); }
+
+    /* Layout */
+    .container {
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:2rem;
+    }
+
+    .card {
+      width:100%;
+      max-width:920px;
+      display:grid;
+      grid-template-columns: 1fr 420px;
+      gap:1.5rem;
+      background: #ffffff;
+      border-radius:16px;
+      box-shadow: 0 6px 30px rgba(17,24,39,0.08);
+      overflow:hidden;
+    }
+
+    /* Left - hero */
+    .hero {
+      padding:2.25rem;
+      background:
+        radial-gradient( circle at 10% 20%, rgba(99,102,241,0.06), transparent 10%),
+        linear-gradient(180deg, rgba(59,130,246,0.03), rgba(56,189,248,0.02));
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+    }
+    .brand {
+      display:flex;
+      align-items:center;
+      gap:.75rem;
+      margin-bottom:1.25rem;
+    }
+    .logo {
+      width:44px;
+      height:44px;
+      border-radius:10px;
+      display:inline-grid;
+      place-items:center;
+      font-weight:700;
+      color:white;
+      background: linear-gradient(135deg,#6366f1,#06b6d4);
+      box-shadow: 0 4px 14px rgba(99,102,241,0.12);
+    }
+    h1 { margin:0 0 .5rem 0; font-size:1.5rem; line-height:1.1; }
+    p.lead { margin:0; color:#374151; opacity:.95; }
+
+    /* Right - form */
+    .form-wrap {
+      padding:2rem;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      gap:1rem;
+      background: linear-gradient(180deg, #fff, #fafbff);
+    }
+
+    .small { font-size:.875rem; color:#6b7280; }
+
+    form { display:flex; flex-direction:column; gap:.85rem; }
+    label { font-size:.9rem; margin-bottom:.25rem; display:block; color:#111827; }
+    input[type="email"], input[type="password"], input[type="text"] {
+      width:100%;
+      padding:.75rem .9rem;
+      border:1px solid #e6e9ef;
+      border-radius:10px;
+      font-size:1rem;
+      outline:none;
+      transition: box-shadow .12s, border-color .12s;
+      background: #fff;
+    }
+    input:focus { border-color: #6366f1; box-shadow: 0 4px 20px rgba(99,102,241,0.08); }
+
+    .row { display:flex; gap:.75rem; align-items:center; justify-content:space-between; }
+    .checkbox { display:flex; gap:.5rem; align-items:center; font-size:.9rem; color:#374151; }
+    .btn {
+      padding:.75rem .9rem;
+      border-radius:10px;
+      font-weight:600;
+      font-size:1rem;
+      border:0;
+      cursor:pointer;
+      background: linear-gradient(90deg,#6366f1,#06b6d4);
+      color:white;
+      box-shadow: 0 8px 24px rgba(6,182,212,0.08);
+    }
+    .btn.secondary {
+      background:transparent;
+      color:#374151;
+      border:1px solid #e6e9ef;
+      box-shadow:none;
+    }
+
+    .muted { font-size:.85rem; color:#6b7280; }
+
+    .helper {
+      display:flex; gap:.75rem; align-items:center; justify-content:space-between;
+      font-size:.9rem; margin-top:.25rem;
+    }
+
+    .password-field { position:relative; }
+    .toggle-pass {
+      position:absolute;
+      right:.5rem;
+      top:50%;
+      transform:translateY(-50%);
+      background:none;
+      border:0;
+      font-size:.9rem;
+      padding:.25rem .5rem;
+      cursor:pointer;
+      color:#6b7280;
+    }
+
+    .footer-note { font-size:.85rem; color:#6b7280; text-align:center; margin-top:1rem; }
+
+    /* Responsive */
+    @media (max-width:880px) {
+      .card { grid-template-columns: 1fr; border-radius:12px; padding:0; }
+      .hero { order:2; padding:1.25rem; }
+      .form-wrap { order:1; padding:1.25rem; }
+    }
+  </style>
+</head>
+<body>
+  <main class="container" role="main">
+    <section class="card" aria-labelledby="login-heading">
+      <div class="hero" aria-hidden="false">
+        <div class="brand" aria-hidden="true">
+          <div class="logo">A</div>
+          <div>
+            <div style="font-weight:700;">AppName</div>
+            <div style="font-size:.85rem;color:#6b7280;">Secure access portal</div>
+          </div>
+        </div>
+
+        <h1 id="login-heading">Welcome back — sign in to continue</h1>
+        <p class="lead">Access your dashboard, manage settings, and review activity. Secure and fast login with best practices.</p>
+
+        <p style="margin-top:1.25rem;" class="small">New here? <a href="#" onclick="alert('Link to signup — replace with real route')">Create an account</a></p>
+
+        <!-- decorative illustration (SVG) -->
+        <div style="margin-top:1.5rem; max-width:380px;">
+          <svg width="100%" height="150" viewBox="0 0 600 150" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="0" y="0" width="600" height="150" rx="12" fill="url(#g)"/>
+            <defs><linearGradient id="g" x1="0" x2="1"><stop offset="0" stop-color="#eef2ff"/><stop offset="1" stop-color="#f0f9ff"/></linearGradient></defs>
+          </svg>
+        </div>
+      </div>
+
+      <div class="form-wrap" aria-hidden="false">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <div>
+            <strong style="font-size:1.05rem;">Sign in</strong>
+            <div class="muted">Enter your credentials to continue</div>
+          </div>
+          <div style="text-align:right; font-size:.85rem;" class="muted">Need help? <a href="#" onclick="alert('Support link')">Contact</a></div>
+        </div>
+
+        <form id="loginForm" novalidate>
+          <div>
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" inputmode="email" autocomplete="email" required placeholder="you@domain.com" />
+            <div class="muted" id="emailHelp" style="margin-top:.35rem;">We'll never share your email.</div>
+          </div>
+
+          <div>
+            <label for="password">Password</label>
+            <div class="password-field">
+              <input id="password" name="password" type="password" autocomplete="current-password" minlength="6" required placeholder="••••••••" />
+              <button type="button" class="toggle-pass" aria-pressed="false" id="togglePassword" title="Show password">Show</button>
+            </div>
+          </div>
+
+          <div class="row" style="margin-top:.25rem;">
+            <label class="checkbox"><input id="remember" name="remember" type="checkbox" /> Remember me</label>
+            <a href="#" onclick="alert('Forgot password flow')">Forgot password?</a>
+          </div>
+
+          <div style="margin-top:.25rem;">
+            <button class="btn" type="submit">Sign in</button>
+          </div>
+        </form>
+
+        <div class="helper">
+          <div class="small">Or continue with</div>
+          <div style="display:flex; gap:.5rem;">
+            <button class="btn secondary" onclick="alert('Google auth placeholder')">Google</button>
+            <button class="btn secondary" onclick="alert('GitHub auth placeholder')">GitHub</button>
+          </div>
+        </div>
+
+        <p class="footer-note">By signing in you agree to our <a href="#" onclick="alert('Terms link')">Terms</a> and <a href="#" onclick="alert('Privacy link')">Privacy</a>.</p>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Simple client-side behavior: validation + demo submit handler + toggle password
+    (function(){
+      const form = document.getElementById('loginForm');
+      const email = document.getElementById('email');
+      const password = document.getElementById('password');
+      const toggleBtn = document.getElementById('togglePassword');
+
+      // Toggle show/hide password
+      toggleBtn.addEventListener('click', () => {
+        const isPassword = password.type === 'password';
+        password.type = isPassword ? 'text' : 'password';
+        toggleBtn.textContent = isPassword ? 'Hide' : 'Show';
+        toggleBtn.setAttribute('aria-pressed', String(isPassword));
+      });
+
+      // Simple validation + demo submit
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        // basic HTML5 validity check
+        if (!form.checkValidity()) {
+          // use built-in reporting
+          form.reportValidity();
+          return;
+        }
+
+        // Example: collect values (DO NOT send passwords in plain text in production)
+        const payload = {
+          email: email.value.trim(),
+          password: password.value, // this is for demo only
+          remember: document.getElementById('remember').checked
+        };
+
+        // Demo: show values and simulate login success
+        console.log('Demo login payload:', payload);
+
+        // Replace this with real fetch() to your authentication endpoint:
+        // fetch('/api/auth/login', { method: 'POST', headers: {...}, body: JSON.stringify(payload) })
+        //   .then(...)
+
+        // For demo: simulate success
+        alert('Demo login successful — replace client-side code with real backend call.');
+        // redirect or update UI:
+        // window.location.href = '/dashboard';
+      });
+    })();
+  </script>
+</body>
+</html>
